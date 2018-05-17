@@ -1,0 +1,15 @@
+# https://circleci.com/blog/how-to-build-a-docker-image-on-circleci-2-0/
+version: 2
+jobs:
+  build:
+    docker:
+      - image: docker:17.09.0-ce-git
+    working_directory: ~/app
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          name: Deploy docker image
+          command: |
+            docker login -u "$DOCKER_USERNAME" --password "$DOCKER_PASSWORD"
+            ./build_dockers.sh
