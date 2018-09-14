@@ -17,6 +17,6 @@ RUN apt-get update && apt-get -y --no-install-recommends install $BUILD_PACKAGES
   && apt-get --purge -y autoremove $BUILD_PACKAGES \
   && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-COPY docker-entrypoint.sh ./
+COPY script/docker-entrypoint.sh ./
 
 ENTRYPOINT ["/docker-entrypoint.sh"]

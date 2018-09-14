@@ -19,6 +19,6 @@ RUN wget -O /tmp/chromedriver.zip http://chromedriver.storage.googleapis.com/$CH
     && rm /tmp/chromedriver.zip \
     && chmod ugo+rx /usr/bin/chromedriver
 
-COPY docker-entrypoint.sh ./
+COPY script/docker-entrypoint.sh ./
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
