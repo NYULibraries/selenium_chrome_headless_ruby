@@ -3,13 +3,24 @@ version: 2
 jobs:
   build:
     docker:
-      - image: docker:17.09.0-ce-git
+      - image: nyulibraries/circleci_docker:18.06.1-ce-git
     working_directory: ~/app
     steps:
       - checkout
       - setup_remote_docker
       - run:
-          name: Deploy docker image
+          name: Pull images
+          command: |
+            ./script/pull_dockers.sh
+      - run:
+          name: Build images
+          command: |
+            docker-compose build
+      - run:
+          name: Authenticate docker
           command: |
             docker login -u "$DOCKER_USERNAME" --password "$DOCKER_PASSWORD"
-            ./build_dockers.sh
+      - run:
+          name: Push images
+          command: |
+            ./script/push_dockers.sh
