@@ -1,15 +1,17 @@
 #!/bin/sh -ex
 
-docker build . --build-arg RUBY_VERSION=2.3 -t nyulibraries/selenium_chrome_headless_ruby:2.3
-docker build . --build-arg RUBY_VERSION=2.4 -t nyulibraries/selenium_chrome_headless_ruby:2.4
-docker build . --build-arg RUBY_VERSION=2.5 -t nyulibraries/selenium_chrome_headless_ruby:2.5
-docker build . -f Dockerfile.slim --build-arg RUBY_VERSION=2.3 -t nyulibraries/selenium_chrome_headless_ruby:2.3-slim
-docker build . -f Dockerfile.slim --build-arg RUBY_VERSION=2.4 -t nyulibraries/selenium_chrome_headless_ruby:2.4-slim
-docker build . -f Dockerfile.slim --build-arg RUBY_VERSION=2.5 -t nyulibraries/selenium_chrome_headless_ruby:2.5-slim
+docker-compose build
 
-docker push nyulibraries/selenium_chrome_headless_ruby:2.3
-docker push nyulibraries/selenium_chrome_headless_ruby:2.4
-docker push nyulibraries/selenium_chrome_headless_ruby:2.5
-docker push nyulibraries/selenium_chrome_headless_ruby:2.3-slim
-docker push nyulibraries/selenium_chrome_headless_ruby:2.4-slim
-docker push nyulibraries/selenium_chrome_headless_ruby:2.5-slim
+docker tag selenium_chrome_headless_ruby:2.3.7 nyulibraries/selenium_chrome_headless_ruby:2.3.7
+docker tag selenium_chrome_headless_ruby:2.4.4 nyulibraries/selenium_chrome_headless_ruby:2.4.4
+docker tag selenium_chrome_headless_ruby:2.3.7 nyulibraries/selenium_chrome_headless_ruby:2.5.1
+docker tag selenium_chrome_headless_ruby:2.5.1-slim nyulibraries/selenium_chrome_headless_ruby:2.3.7-slim
+docker tag selenium_chrome_headless_ruby:2.4.4-slim nyulibraries/selenium_chrome_headless_ruby:2.4.4-slim
+docker tag selenium_chrome_headless_ruby:2.5.1-slim nyulibraries/selenium_chrome_headless_ruby:2.5.1-slim
+
+docker push nyulibraries/selenium_chrome_headless_ruby:2.3.7
+docker push nyulibraries/selenium_chrome_headless_ruby:2.4.4
+docker push nyulibraries/selenium_chrome_headless_ruby:2.5.1
+docker push nyulibraries/selenium_chrome_headless_ruby:2.3.7-slim
+docker push nyulibraries/selenium_chrome_headless_ruby:2.4.4-slim
+docker push nyulibraries/selenium_chrome_headless_ruby:2.5.1-slim

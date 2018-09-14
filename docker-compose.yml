@@ -1,0 +1,47 @@
+version: "3.2"
+services:
+
+  full_2_3:
+    image: selenium_chrome_headless_ruby:2.3.7
+    build:
+      context: .
+      args:
+        RUBY_VERSION: 2.3.7
+
+  slim_2_3:
+    image: selenium_chrome_headless_ruby:2.3.7-slim
+    build:
+      context: .
+      dockerfile: Dockerfile.slim
+      args:
+        RUBY_VERSION: 2.3.7
+
+  full_2_4:
+    image: selenium_chrome_headless_ruby:2.4.4
+    build:
+      context: .
+      args:
+        RUBY_VERSION: 2.4.4
+
+  slim_2_4:
+    image: selenium_chrome_headless_ruby:2.4.4-slim
+    build:
+      context: .
+      dockerfile: Dockerfile.slim
+      args:
+        RUBY_VERSION: 2.4.4
+
+  full_2_5:
+    image: selenium_chrome_headless_ruby:2.5.1
+    build:
+      context: .
+      args:
+        RUBY_VERSION: 2.5.1
+
+  slim_2_5:
+    image: selenium_chrome_headless_ruby:2.5.1-slim
+    build:
+      context: .
+      dockerfile: Dockerfile.slim
+      args:
+        RUBY_VERSION: 2.5.1
