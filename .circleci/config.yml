@@ -9,6 +9,10 @@ jobs:
       - checkout
       - setup_remote_docker
       - run:
+          name: Pull images
+          command: |
+            ./script/pull_dockers.sh
+      - run:
           name: Build images
           command: |
             docker-compose build
@@ -19,4 +23,4 @@ jobs:
       - run:
           name: Push images
           command: |
-            ./push_dockers.sh
+            ./script/push_dockers.sh

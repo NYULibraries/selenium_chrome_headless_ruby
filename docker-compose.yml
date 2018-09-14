@@ -5,6 +5,10 @@ services:
     image: selenium_chrome_headless_ruby:2.3.7
     build:
       context: .
+      cache_from:
+        - ruby:2.3.7
+        - selenium_chrome_headless_ruby:2.3.7
+        - nyulibraries/selenium_chrome_headless_ruby:2.3.7
       args:
         RUBY_VERSION: 2.3.7
 
@@ -13,6 +17,10 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.slim
+      cache_from:
+        - ruby:2.3.7-slim
+        - selenium_chrome_headless_ruby:2.3.7-slim
+        - nyulibraries/selenium_chrome_headless_ruby:2.3.7-slim
       args:
         RUBY_VERSION: 2.3.7
 
@@ -20,6 +28,10 @@ services:
     image: selenium_chrome_headless_ruby:2.4.4
     build:
       context: .
+      cache_from:
+        - ruby:2.4.4
+        - selenium_chrome_headless_ruby:2.4.4
+        - nyulibraries/selenium_chrome_headless_ruby:2.4.4
       args:
         RUBY_VERSION: 2.4.4
 
@@ -28,6 +40,10 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.slim
+      cache_from:
+        - ruby:2.4.4-slim
+        - selenium_chrome_headless_ruby:2.4.4-slim
+        - nyulibraries/selenium_chrome_headless_ruby:2.4.4-slim
       args:
         RUBY_VERSION: 2.4.4
 
@@ -35,6 +51,10 @@ services:
     image: selenium_chrome_headless_ruby:2.5.1
     build:
       context: .
+      cache_from:
+        - ruby:2.5.1
+        - selenium_chrome_headless_ruby:2.5.1
+        - nyulibraries/selenium_chrome_headless_ruby:2.5.1
       args:
         RUBY_VERSION: 2.5.1
 
@@ -43,5 +63,9 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.slim
+      cache_from:
+        - ruby:2.5.1-slim
+        - selenium_chrome_headless_ruby:2.5.1-slim
+        - nyulibraries/selenium_chrome_headless_ruby:2.5.1-slim
       args:
         RUBY_VERSION: 2.5.1
