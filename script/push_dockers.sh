@@ -16,6 +16,6 @@ do
   docker push nyulibraries/selenium_chrome_headless_ruby:$version-${CIRCLE_BRANCH//\//_}-${CIRCLE_SHA1}
   if [[ "$CIRCLE_BRANCH" = "master" ]]
   then
-    docker tag selenium_chrome_headless_ruby:$version nyulibraries/selenium_chrome_headless_ruby:$version
+    docker push nyulibraries/selenium_chrome_headless_ruby:$version
   fi
 done
