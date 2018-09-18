@@ -7,6 +7,9 @@ do
   if [[ "$CIRCLE_BRANCH" = "master" ]]
   then
     docker tag selenium_chrome_headless_ruby:$version nyulibraries/selenium_chrome_headless_ruby:$version
+    # also tag with short version, which excludes patch version number
+    local short_version=`echo $version | sed -e 's/\..$//g' | sed -e 's/\..-/-/g'`
+    docker tag selenium_chrome_headless_ruby:$version nyulibraries/selenium_chrome_headless_ruby:$short_version
   fi
 done
 
@@ -17,5 +20,7 @@ do
   if [[ "$CIRCLE_BRANCH" = "master" ]]
   then
     docker push nyulibraries/selenium_chrome_headless_ruby:$version
+    local short_version=`echo $version | sed -e 's/\..$//g' | sed -e 's/\..-/-/g'`
+    docker push nyulibraries/selenium_chrome_headless_ruby:$short_version
   fi
 done
