@@ -9,8 +9,11 @@ services:
         - ruby:2.3.7
         - selenium_chrome_headless_ruby:2.3.7
         - nyulibraries/selenium_chrome_headless_ruby:2.3.7
+        - nyulibraries/selenium_chrome_headless_ruby:2.3.7-$BRANCH_NO_SLASH
       args:
         RUBY_VERSION: 2.3.7
+        CHROME_VERSION: 69.0.3497.100-1
+        CHROMIUM_DRIVER_VERSION: "2.42"
 
   slim_2_3:
     image: selenium_chrome_headless_ruby:2.3.7-slim
@@ -21,8 +24,11 @@ services:
         - ruby:2.3.7-slim
         - selenium_chrome_headless_ruby:2.3.7-slim
         - nyulibraries/selenium_chrome_headless_ruby:2.3.7-slim
+        - nyulibraries/selenium_chrome_headless_ruby:2.3.7-slim-$BRANCH_NO_SLASH
       args:
         RUBY_VERSION: 2.3.7
+        CHROME_VERSION: 69.0.3497.100-1
+        CHROMIUM_DRIVER_VERSION: "2.42"
 
   full_2_4:
     image: selenium_chrome_headless_ruby:2.4.4
@@ -32,8 +38,11 @@ services:
         - ruby:2.4.4
         - selenium_chrome_headless_ruby:2.4.4
         - nyulibraries/selenium_chrome_headless_ruby:2.4.4
+        - nyulibraries/selenium_chrome_headless_ruby:2.4.4-$BRANCH_NO_SLASH
       args:
         RUBY_VERSION: 2.4.4
+        CHROME_VERSION: 69.0.3497.100-1
+        CHROMIUM_DRIVER_VERSION: "2.42"
 
   slim_2_4:
     image: selenium_chrome_headless_ruby:2.4.4-slim
@@ -44,8 +53,11 @@ services:
         - ruby:2.4.4-slim
         - selenium_chrome_headless_ruby:2.4.4-slim
         - nyulibraries/selenium_chrome_headless_ruby:2.4.4-slim
+        - nyulibraries/selenium_chrome_headless_ruby:2.4.4-slim-$BRANCH_NO_SLASH
       args:
         RUBY_VERSION: 2.4.4
+        CHROME_VERSION: 69.0.3497.100-1
+        CHROMIUM_DRIVER_VERSION: "2.42"
 
   full_2_5:
     image: selenium_chrome_headless_ruby:2.5.1
@@ -55,8 +67,11 @@ services:
         - ruby:2.5.1
         - selenium_chrome_headless_ruby:2.5.1
         - nyulibraries/selenium_chrome_headless_ruby:2.5.1
+        - nyulibraries/selenium_chrome_headless_ruby:2.5.1-$BRANCH_NO_SLASH
       args:
         RUBY_VERSION: 2.5.1
+        CHROME_VERSION: 69.0.3497.100-1
+        CHROMIUM_DRIVER_VERSION: "2.42"
 
   slim_2_5:
     image: selenium_chrome_headless_ruby:2.5.1-slim
@@ -67,5 +82,8 @@ services:
         - ruby:2.5.1-slim
         - selenium_chrome_headless_ruby:2.5.1-slim
         - nyulibraries/selenium_chrome_headless_ruby:2.5.1-slim
+        - nyulibraries/selenium_chrome_headless_ruby:2.5.1-slim-$BRANCH_NO_SLASH
       args:
         RUBY_VERSION: 2.5.1
+        CHROME_VERSION: 69.0.3497.100-1
+        CHROMIUM_DRIVER_VERSION: "2.42"
