@@ -3,13 +3,14 @@ ARG RUBY_VERSION=2.5
 FROM ruby:${RUBY_VERSION}-slim
 
 # Install dependencies & Chrome
-ENV CHROMIUM_DRIVER_VERSION 2.38
-ENV BUILD_PACKAGES gnupg zlib1g-dev liblzma-dev unzip nodejs
-ENV RUN_PACKAGES xvfb libgconf2-4 libnss3 wget
+ARG BUILD_PACKAGES="gnupg zlib1g-dev liblzma-dev unzip nodejs"
+ARG RUN_PACKAGES="xvfb libgconf2-4 libnss3 wget"
+ARG CHROME_VERSION=69.0.3497.100-1
+ARG CHROMIUM_DRIVER_VERSION=2.42
 RUN apt-get update && apt-get -y --no-install-recommends install $BUILD_PACKAGES $RUN_PACKAGES \
   && wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -  \
   && echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list \
-  && apt-get update && apt-get -y --no-install-recommends install google-chrome-stable \
+  && apt-get update && apt-get -y --no-install-recommends install google-chrome-stable=$CHROME_VERSION \
   && wget -O /tmp/chromedriver.zip http://chromedriver.storage.googleapis.com/$CHROMIUM_DRIVER_VERSION/chromedriver_linux64.zip \
   && unzip /tmp/chromedriver.zip chromedriver -d /usr/bin/ \
   && rm /tmp/chromedriver.zip \
