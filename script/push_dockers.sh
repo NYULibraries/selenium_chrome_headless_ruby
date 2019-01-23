@@ -1,6 +1,6 @@
 #!/bin/sh -ex
 
-for version in 2.3.7 2.4.4 2.5.1 2.3.7-slim 2.4.4-slim 2.5.1-slim
+for version in $RUBY_2_3 $RUBY_2_4 $RUBY_2_5 $RUBY_2_3-slim $RUBY_2_4-slim $RUBY_2_5-slim
 do
   docker tag selenium_chrome_headless_ruby:$version quay.io/nyulibraries/selenium_chrome_headless_ruby:$version-chrome_$CHROME_VERSION_SHORT-${CIRCLE_BRANCH//\//_}
   docker tag selenium_chrome_headless_ruby:$version quay.io/nyulibraries/selenium_chrome_headless_ruby:$version-chrome_$CHROME_VERSION_SHORT-${CIRCLE_BRANCH//\//_}-${CIRCLE_SHA1}
@@ -13,7 +13,7 @@ do
   fi
 done
 
-for version in 2.3.7 2.4.4 2.5.1 2.3.7-slim 2.4.4-slim 2.5.1-slim
+for version in $RUBY_2_3 $RUBY_2_4 $RUBY_2_5 $RUBY_2_3-slim $RUBY_2_4-slim $RUBY_2_5-slim
 do
   docker push quay.io/nyulibraries/selenium_chrome_headless_ruby:$version-chrome_$CHROME_VERSION_SHORT-${CIRCLE_BRANCH//\//_}
   docker push quay.io/nyulibraries/selenium_chrome_headless_ruby:$version-chrome_$CHROME_VERSION_SHORT-${CIRCLE_BRANCH//\//_}-${CIRCLE_SHA1}

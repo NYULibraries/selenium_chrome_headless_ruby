@@ -11,7 +11,7 @@ services:
         - nyulibraries/selenium_chrome_headless_ruby:2.3.7
         - nyulibraries/selenium_chrome_headless_ruby:2.3.7-$BRANCH_NO_SLASH
       args:
-        RUBY_VERSION: 2.3.7
+        RUBY_VERSION: $RUBY_2_3
         CHROME_VERSION: $CHROME_VERSION
         CHROMIUM_DRIVER_VERSION: "2.42"
 
@@ -26,7 +26,7 @@ services:
         - nyulibraries/selenium_chrome_headless_ruby:2.3.7-slim
         - nyulibraries/selenium_chrome_headless_ruby:2.3.7-slim-$BRANCH_NO_SLASH
       args:
-        RUBY_VERSION: 2.3.7
+        RUBY_VERSION: $RUBY_2_3
         CHROME_VERSION: $CHROME_VERSION
         CHROMIUM_DRIVER_VERSION: "2.42"
 
@@ -40,7 +40,7 @@ services:
         - nyulibraries/selenium_chrome_headless_ruby:2.4.4
         - nyulibraries/selenium_chrome_headless_ruby:2.4.4-$BRANCH_NO_SLASH
       args:
-        RUBY_VERSION: 2.4.4
+        RUBY_VERSION: $RUBY_2_4
         CHROME_VERSION: $CHROME_VERSION
         CHROMIUM_DRIVER_VERSION: "2.42"
 
@@ -55,7 +55,7 @@ services:
         - nyulibraries/selenium_chrome_headless_ruby:2.4.4-slim
         - nyulibraries/selenium_chrome_headless_ruby:2.4.4-slim-$BRANCH_NO_SLASH
       args:
-        RUBY_VERSION: 2.4.4
+        RUBY_VERSION: $RUBY_2_4
         CHROME_VERSION: $CHROME_VERSION
         CHROMIUM_DRIVER_VERSION: "2.42"
 
@@ -69,7 +69,7 @@ services:
         - nyulibraries/selenium_chrome_headless_ruby:2.5.1
         - nyulibraries/selenium_chrome_headless_ruby:2.5.1-$BRANCH_NO_SLASH
       args:
-        RUBY_VERSION: 2.5.1
+        RUBY_VERSION: $RUBY_2_5
         CHROME_VERSION: $CHROME_VERSION
         CHROMIUM_DRIVER_VERSION: "2.42"
 
@@ -84,6 +84,6 @@ services:
         - nyulibraries/selenium_chrome_headless_ruby:2.5.1-slim
         - nyulibraries/selenium_chrome_headless_ruby:2.5.1-slim-$BRANCH_NO_SLASH
       args:
-        RUBY_VERSION: 2.5.1
+        RUBY_VERSION: $RUBY_2_5
         CHROME_VERSION: $CHROME_VERSION
         CHROMIUM_DRIVER_VERSION: "2.42"
