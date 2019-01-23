@@ -20,7 +20,7 @@ jobs:
       - run:
           name: Authenticate docker
           command: |
-            docker login -u "$DOCKER_USERNAME" --password "$DOCKER_PASSWORD"
+            docker login -u "$QUAY_USERNAME" --password "$QUAY_PASSWORD" quay.io
       - run:
           name: Push images
           command: |
