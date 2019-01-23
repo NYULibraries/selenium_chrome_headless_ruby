@@ -3,7 +3,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: nyulibraries/circleci_docker:18.06.1-ce-git
+      - image: quay.io/nyulibraries/circleci_docker:18.06.1-dc-1.23.2-0
     working_directory: ~/app
     steps:
       - checkout
