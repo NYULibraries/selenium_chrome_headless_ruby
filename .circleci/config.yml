@@ -24,4 +24,4 @@ jobs:
       - run:
           name: Push images
           command: |
-            ./script/push_dockers.sh
+            source .env && script/push_dockers.sh
