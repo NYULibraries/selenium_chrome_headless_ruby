@@ -8,10 +8,10 @@ jobs:
     steps:
       - checkout
       - setup_remote_docker
-      - run:
-          name: Pull images
-          command: |
-            ./script/pull_dockers.sh
+        #      - run:
+        #          name: Pull images
+        #          command: |
+        #            ./script/pull_dockers.sh
       - run:
           name: Build images
           command: |
