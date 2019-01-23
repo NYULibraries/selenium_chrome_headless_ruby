@@ -3,15 +3,15 @@ version: 2
 jobs:
   build:
     docker:
-      - image: nyulibraries/circleci_docker:18.06.1-ce-git
+      - image: quay.io/nyulibraries/circleci_docker:18.06.1-dc-1.23.2-0
     working_directory: ~/app
     steps:
       - checkout
       - setup_remote_docker
-      - run:
-          name: Pull images
-          command: |
-            ./script/pull_dockers.sh
+        #      - run:
+        #          name: Pull images
+        #          command: |
+        #            ./script/pull_dockers.sh
       - run:
           name: Build images
           command: |
@@ -20,8 +20,8 @@ jobs:
       - run:
           name: Authenticate docker
           command: |
-            docker login -u "$DOCKER_USERNAME" --password "$DOCKER_PASSWORD"
+            docker login -u "$QUAY_USERNAME" --password "$QUAY_PASSWORD" quay.io
       - run:
           name: Push images
           command: |
-            ./script/push_dockers.sh
+            env $(cat .env | xargs) script/push_dockers.sh
