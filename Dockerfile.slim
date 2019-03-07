@@ -5,8 +5,8 @@ FROM ruby:${RUBY_VERSION}-slim
 # Install dependencies & Chrome
 ARG BUILD_PACKAGES="gnupg zlib1g-dev liblzma-dev unzip nodejs"
 ARG RUN_PACKAGES="xvfb libgconf2-4 libnss3 wget"
-ARG CHROME_VERSION=69.0.3497.100-1
-ARG CHROMIUM_DRIVER_VERSION=2.42
+ARG CHROME_VERSION
+ARG CHROMIUM_DRIVER_VERSION
 RUN apt-get update && apt-get -y --no-install-recommends install $BUILD_PACKAGES $RUN_PACKAGES \
   && wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -  \
   && echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list \
