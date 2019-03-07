@@ -13,7 +13,7 @@ services:
       args:
         RUBY_VERSION: $RUBY_2_3
         CHROME_VERSION: $CHROME_VERSION
-        CHROMIUM_DRIVER_VERSION: "2.42"
+        CHROMIUM_DRIVER_VERSION: $CHROMIUM_DRIVER_VERSION
 
   slim_2_3:
     image: selenium_chrome_headless_ruby:$RUBY_2_3-slim
@@ -28,7 +28,7 @@ services:
       args:
         RUBY_VERSION: $RUBY_2_3
         CHROME_VERSION: $CHROME_VERSION
-        CHROMIUM_DRIVER_VERSION: "2.42"
+        CHROMIUM_DRIVER_VERSION: $CHROMIUM_DRIVER_VERSION
 
   full_2_4:
     image: selenium_chrome_headless_ruby:$RUBY_2_4
@@ -42,7 +42,7 @@ services:
       args:
         RUBY_VERSION: $RUBY_2_4
         CHROME_VERSION: $CHROME_VERSION
-        CHROMIUM_DRIVER_VERSION: "2.42"
+        CHROMIUM_DRIVER_VERSION: $CHROMIUM_DRIVER_VERSION
 
   slim_2_4:
     image: selenium_chrome_headless_ruby:$RUBY_2_4-slim
@@ -57,7 +57,7 @@ services:
       args:
         RUBY_VERSION: $RUBY_2_4
         CHROME_VERSION: $CHROME_VERSION
-        CHROMIUM_DRIVER_VERSION: "2.42"
+        CHROMIUM_DRIVER_VERSION: $CHROMIUM_DRIVER_VERSION
 
   full_2_5:
     image: selenium_chrome_headless_ruby:$RUBY_2_5
@@ -71,7 +71,7 @@ services:
       args:
         RUBY_VERSION: $RUBY_2_5
         CHROME_VERSION: $CHROME_VERSION
-        CHROMIUM_DRIVER_VERSION: "2.42"
+        CHROMIUM_DRIVER_VERSION: $CHROMIUM_DRIVER_VERSION
 
   slim_2_5:
     image: selenium_chrome_headless_ruby:$RUBY_2_5-slim
@@ -86,4 +86,4 @@ services:
       args:
         RUBY_VERSION: $RUBY_2_5
         CHROME_VERSION: $CHROME_VERSION
-        CHROMIUM_DRIVER_VERSION: "2.42"
+        CHROMIUM_DRIVER_VERSION: $CHROMIUM_DRIVER_VERSION
