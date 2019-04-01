@@ -7,8 +7,8 @@ Docker image with Selenium with Headless Chrome built on base Ruby image
 Create your dockerfile for tests, with version corresponding to desired Ruby version and Chrome version:
 
 ```
-# ruby 2.5.1 with selenium and headless chrome version 69
-FROM selenium_chrome_headless_ruby:2.5.1-chrome_69
+# ruby 2.6.2 with selenium and headless chrome version 73
+FROM selenium_chrome_headless_ruby:2.6.2-chrome_73
 
 # bundle install
 WORKDIR /app
