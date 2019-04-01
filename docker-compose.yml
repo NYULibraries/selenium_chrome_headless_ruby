@@ -87,3 +87,32 @@ services:
         RUBY_VERSION: $RUBY_2_5
         CHROME_VERSION: $CHROME_VERSION
         CHROMIUM_DRIVER_VERSION: $CHROMIUM_DRIVER_VERSION
+
+  full_2_6:
+    image: selenium_chrome_headless_ruby:$RUBY_2_6
+    build:
+      context: .
+      cache_from:
+        - ruby:$RUBY_2_6
+        - selenium_chrome_headless_ruby:$RUBY_2_6
+        - quay.io/nyulibraries/selenium_chrome_headless_ruby:$RUBY_2_6
+        - quay.io/nyulibraries/selenium_chrome_headless_ruby:$RUBY_2_6-$BRANCH_NO_SLASH
+      args:
+        RUBY_VERSION: $RUBY_2_6
+        CHROME_VERSION: $CHROME_VERSION
+        CHROMIUM_DRIVER_VERSION: $CHROMIUM_DRIVER_VERSION
+
+  slim_2_6:
+    image: selenium_chrome_headless_ruby:$RUBY_2_6-slim
+    build:
+      context: .
+      dockerfile: Dockerfile.slim
+      cache_from:
+        - ruby:$RUBY_2_6-slim
+        - selenium_chrome_headless_ruby:$RUBY_2_6-slim
+        - quay.io/nyulibraries/selenium_chrome_headless_ruby:$RUBY_2_6-slim
+        - quay.io/nyulibraries/selenium_chrome_headless_ruby:$RUBY_2_6-slim-$BRANCH_NO_SLASH
+      args:
+        RUBY_VERSION: $RUBY_2_6
+        CHROME_VERSION: $CHROME_VERSION
+        CHROMIUM_DRIVER_VERSION: $CHROMIUM_DRIVER_VERSION
