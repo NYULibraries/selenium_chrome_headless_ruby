@@ -1,5 +1,7 @@
 # Selenium Chrome Headless with Ruby
 
+[![Docker Repository on Quay](https://quay.io/repository/nyulibraries/selenium_chrome_headless_ruby/status "Docker Repository on Quay")](https://quay.io/repository/nyulibraries/selenium_chrome_headless_ruby)
+
 Docker image with Selenium with Headless Chrome built on base Ruby image
 
 ## Usage
