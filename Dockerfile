@@ -2,6 +2,10 @@ ARG RUBY_VERSION=2.6
 
 FROM ruby:${RUBY_VERSION}
 
+ARG INSTALL_PATH=/app
+RUN groupadd -g 2000 docker -r && \
+  useradd -u 1000 -r --no-log-init -m -d "$INSTALL_PATH" -g docker docker
+
 # Install essentials
 RUN apt-get update -qq && apt-get install -y --no-install-recommends build-essential \
  && rm -rf /var/lib/apt/lists/*
@@ -22,6 +26,8 @@ RUN wget -O /tmp/chromedriver.zip http://chromedriver.storage.googleapis.com/$CH
     && rm /tmp/chromedriver.zip \
     && chmod ugo+rx /usr/bin/chromedriver
 
+USER docker
+WORKDIR $INSTALL_PATH
 COPY script/docker-entrypoint.sh ./
 
-ENTRYPOINT ["/docker-entrypoint.sh"]
+ENTRYPOINT ["/app/docker-entrypoint.sh"]
