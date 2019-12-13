@@ -3,10 +3,12 @@ ARG RUBY_VERSION=2.6
 FROM ruby:${RUBY_VERSION}
 
 # Install essentials
-RUN apt-get update -qq && apt-get install -y build-essential
+RUN apt-get update -qq && apt-get install -y --no-install-recommends build-essential \
+ && rm -rf /var/lib/apt/lists/*
 
 # Install dependencies & Chrome
 ARG CHROME_VERSION
+SHELL ["/bin/bash", "-eo", "pipefail", "-c"]
 RUN apt-get update && apt-get -y --no-install-recommends install zlib1g-dev liblzma-dev wget xvfb unzip libgconf-2-4 libnss3 nodejs \
  && wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -  \
  && echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list \
