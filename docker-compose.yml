@@ -1,35 +1,6 @@
 version: "3.2"
 services:
 
-  #  full_2_3:
-  #    image: selenium_chrome_headless_ruby:$RUBY_2_3
-  #    build:
-  #      context: .
-  #      cache_from:
-  #        - ruby:$RUBY_2_3
-  #        - selenium_chrome_headless_ruby:$RUBY_2_3
-  #        - quay.io/nyulibraries/selenium_chrome_headless_ruby:$RUBY_2_3
-  #        - quay.io/nyulibraries/selenium_chrome_headless_ruby:$RUBY_2_3-$BRANCH_NO_SLASH
-  #      args:
-  #        RUBY_VERSION: $RUBY_2_3
-  #        CHROME_VERSION: $CHROME_VERSION
-  #        CHROMIUM_DRIVER_VERSION: $CHROMIUM_DRIVER_VERSION
-  #
-  #  slim_2_3:
-  #    image: selenium_chrome_headless_ruby:$RUBY_2_3-slim
-  #    build:
-  #      context: .
-  #      dockerfile: Dockerfile.slim
-  #      cache_from:
-  #        - ruby:$RUBY_2_3-slim
-  #        - selenium_chrome_headless_ruby:$RUBY_2_3-slim
-  #        - quay.io/nyulibraries/selenium_chrome_headless_ruby:$RUBY_2_3-slim
-  #        - quay.io/nyulibraries/selenium_chrome_headless_ruby:$RUBY_2_3-slim-$BRANCH_NO_SLASH
-  #      args:
-  #        RUBY_VERSION: $RUBY_2_3
-  #        CHROME_VERSION: $CHROME_VERSION
-  #        CHROMIUM_DRIVER_VERSION: $CHROMIUM_DRIVER_VERSION
-
   full_2_4:
     image: selenium_chrome_headless_ruby:$RUBY_2_4
     build:
@@ -116,3 +87,33 @@ services:
         RUBY_VERSION: $RUBY_2_6
         CHROME_VERSION: $CHROME_VERSION
         CHROMIUM_DRIVER_VERSION: $CHROMIUM_DRIVER_VERSION
+
+  full_2_7:
+    image: selenium_chrome_headless_ruby:$RUBY_2_7
+    build:
+      context: .
+      cache_from:
+        - ruby:$RUBY_2_7
+        - selenium_chrome_headless_ruby:$RUBY_2_7
+        - quay.io/nyulibraries/selenium_chrome_headless_ruby:$RUBY_2_7
+        - quay.io/nyulibraries/selenium_chrome_headless_ruby:$RUBY_2_7-$BRANCH_NO_SLASH
+      args:
+        RUBY_VERSION: $RUBY_2_7
+        CHROME_VERSION: $CHROME_VERSION
+        CHROMIUM_DRIVER_VERSION: $CHROMIUM_DRIVER_VERSION
+
+  slim_2_7:
+    image: selenium_chrome_headless_ruby:$RUBY_2_7-slim
+    build:
+      context: .
+      dockerfile: Dockerfile.slim
+      cache_from:
+        - ruby:$RUBY_2_7-slim
+        - selenium_chrome_headless_ruby:$RUBY_2_7-slim
+        - quay.io/nyulibraries/selenium_chrome_headless_ruby:$RUBY_2_7-slim
+        - quay.io/nyulibraries/selenium_chrome_headless_ruby:$RUBY_2_7-slim-$BRANCH_NO_SLASH
+      args:
+        RUBY_VERSION: $RUBY_2_7
+        CHROME_VERSION: $CHROME_VERSION
+        CHROMIUM_DRIVER_VERSION: $CHROMIUM_DRIVER_VERSION
+
