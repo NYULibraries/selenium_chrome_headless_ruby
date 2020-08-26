@@ -12,16 +12,18 @@ RUN apt-get update -qq && apt-get install -y --no-install-recommends build-essen
 
 # Install dependencies & Chrome
 ARG CHROME_VERSION
+RUN : "${CHROME_VERSION:?Need to set CHROME_VERSION non-empty}"
 SHELL ["/bin/bash", "-eo", "pipefail", "-c"]
 RUN apt-get update && apt-get -y --no-install-recommends install zlib1g-dev liblzma-dev wget xvfb unzip libgconf-2-4 libnss3 nodejs \
  && wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -  \
- && echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list \
+ && echo "deb https://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list \
  && apt-get update && apt-get -y --no-install-recommends install google-chrome-stable=$CHROME_VERSION \
  && rm -rf /var/lib/apt/lists/*
 
 # Install Chrome driver
 ARG CHROMIUM_DRIVER_VERSION
-RUN wget -O /tmp/chromedriver.zip http://chromedriver.storage.googleapis.com/$CHROMIUM_DRIVER_VERSION/chromedriver_linux64.zip \
+RUN : "${CHROMIUM_DRIVER_VERSION:?Need to set CHROMIUM_DRIVER_VERSION non-empty}"
+RUN wget -O /tmp/chromedriver.zip https://chromedriver.storage.googleapis.com/$CHROMIUM_DRIVER_VERSION/chromedriver_linux64.zip \
     && unzip /tmp/chromedriver.zip chromedriver -d /usr/bin/ \
     && rm /tmp/chromedriver.zip \
     && chmod ugo+rx /usr/bin/chromedriver
