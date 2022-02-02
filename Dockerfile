@@ -14,7 +14,7 @@ RUN apt-get update -qq && apt-get install -y --no-install-recommends build-essen
 ARG CHROME_VERSION
 RUN : "${CHROME_VERSION:?Need to set CHROME_VERSION non-empty}"
 SHELL ["/bin/bash", "-eo", "pipefail", "-c"]
-RUN apt-get update && apt-get -y --no-install-recommends install zlib1g-dev liblzma-dev wget xvfb unzip libgconf-2-4 libnss3 nodejs \
+RUN apt-get update && apt-get -y --no-install-recommends --fix-broken install zlib1g-dev liblzma-dev wget xvfb unzip libgconf-2-4 libnss3 nodejs \
  && wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -  \
  && echo "deb https://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list \
  && apt-get update && apt-get -y --no-install-recommends install google-chrome-stable=$CHROME_VERSION \
