@@ -1,27 +1,78 @@
 # https://circleci.com/blog/how-to-build-a-docker-image-on-circleci-2-0/
+
+build_and_push: &build_and_push
+  docker:
+    - image: quay.io/nyulibraries/circleci_docker:18.06.1-dc-1.23.2-0
+  working_directory: ~/app
+  steps:
+    - checkout
+    - setup_remote_docker
+    - run:
+        name: Build image
+        command: |
+          export BRANCH_NO_SLASH=${CIRCLE_BRANCH//\//_}
+          docker-compose build $COMPOSE_SERVICE
+    - run:
+        name: Authenticate docker
+        command: |
+          docker login -u "$QUAY_USERNAME" --password "$QUAY_PASSWORD" quay.io
+    - run:
+        name: Push image
+        command: |
+          env $(cat .env | xargs) script/push_dockers.sh $RUBY_DOCKER_TAG
+
 version: 2
 jobs:
-  build:
-    docker:
-      - image: quay.io/nyulibraries/circleci_docker:18.06.1-dc-1.23.2-0
-    working_directory: ~/app
-    steps:
-      - checkout
-      - setup_remote_docker
-        #      - run:
-        #          name: Pull images
-        #          command: |
-        #            ./script/pull_dockers.sh
-      - run:
-          name: Build images
-          command: |
-            export BRANCH_NO_SLASH=${CIRCLE_BRANCH//\//_}
-            docker-compose build
-      - run:
-          name: Authenticate docker
-          command: |
-            docker login -u "$QUAY_USERNAME" --password "$QUAY_PASSWORD" quay.io
-      - run:
-          name: Push images
-          command: |
-            env $(cat .env | xargs) script/push_dockers.sh
+  ruby2_4:
+    <<: *build_and_push
+    environment:
+      COMPOSE_SERVICE: full_2_4
+      RUBY_DOCKER_TAG: 2.4.10
+  ruby2_4-slim:
+    <<: *build_and_push
+    environment:
+      COMPOSE_SERVICE: slim_2_4
+      RUBY_DOCKER_TAG: 2.4.10-slim
+  ruby2_5:
+    <<: *build_and_push
+    environment:
+      COMPOSE_SERVICE: full_2_5
+      RUBY_DOCKER_TAG: 2.5.9
+  ruby2_5-slim:
+    <<: *build_and_push
+    environment:
+      COMPOSE_SERVICE: slim_2_5
+      RUBY_DOCKER_TAG: 2.5.9-slim
+  ruby2_6:
+    <<: *build_and_push
+    environment:
+      COMPOSE_SERVICE: full_2_6
+      RUBY_DOCKER_TAG: 2.6.9
+  ruby2_6-slim:
+    <<: *build_and_push
+    environment:
+      COMPOSE_SERVICE: slim_2_6
+      RUBY_DOCKER_TAG: 2.6.9-slim
+  ruby2_7:
+    <<: *build_and_push
+    environment:
+      COMPOSE_SERVICE: full_2_7
+      RUBY_DOCKER_TAG: 2.7.5
+  ruby2_7-slim:
+    <<: *build_and_push
+    environment:
+      COMPOSE_SERVICE: slim_2_7
+      RUBY_DOCKER_TAG: 2.7.5-slim
+
+workflows:
+  version: 2
+  build-and-deliver:
+    jobs:
+      - ruby2_4
+      - ruby2_5
+      - ruby2_6
+      - ruby2_7
+      - ruby2_4-slim
+      - ruby2_5-slim
+      - ruby2_6-slim
+      - ruby2_7-slim
