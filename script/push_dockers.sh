@@ -1,6 +1,14 @@
 #!/bin/sh -ex
 
-for version in $RUBY_2_4 $RUBY_2_5 $RUBY_2_6 $RUBY_2_7 $RUBY_2_4-slim $RUBY_2_5-slim $RUBY_2_6-slim $RUBY_2_7-slim
+if [ -n "$1" ]; then
+  echo "Building ruby $1"
+  RUBIES="$1"
+else
+  echo "Defaulting to all rubies: $RUBY_2_4 $RUBY_2_5 $RUBY_2_6 $RUBY_2_7 $RUBY_2_4-slim $RUBY_2_5-slim $RUBY_2_6-slim $RUBY_2_7-slim"
+  RUBIES="$RUBY_2_4 $RUBY_2_5 $RUBY_2_6 $RUBY_2_7 $RUBY_2_4-slim $RUBY_2_5-slim $RUBY_2_6-slim $RUBY_2_7-slim"
+fi
+
+for version in $RUBIES
 do
   docker tag selenium_chrome_headless_ruby:$version quay.io/nyulibraries/selenium_chrome_headless_ruby:$version-chrome_$CHROME_VERSION_SHORT-${CIRCLE_BRANCH//\//_}
   docker tag selenium_chrome_headless_ruby:$version quay.io/nyulibraries/selenium_chrome_headless_ruby:$version-chrome_$CHROME_VERSION_SHORT-${CIRCLE_BRANCH//\//_}-${CIRCLE_SHA1}
@@ -13,7 +21,7 @@ do
   fi
 done
 
-for version in $RUBY_2_4 $RUBY_2_5 $RUBY_2_6 $RUBY_2_7 $RUBY_2_4-slim $RUBY_2_5-slim $RUBY_2_6-slim $RUBY_2_7-slim
+for version in $RUBIES
 do
   docker push quay.io/nyulibraries/selenium_chrome_headless_ruby:$version-chrome_$CHROME_VERSION_SHORT-${CIRCLE_BRANCH//\//_}
   docker push quay.io/nyulibraries/selenium_chrome_headless_ruby:$version-chrome_$CHROME_VERSION_SHORT-${CIRCLE_BRANCH//\//_}-${CIRCLE_SHA1}
