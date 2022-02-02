@@ -10,6 +10,7 @@ build_and_push: &build_and_push
     - run:
         name: Build image
         command: |
+          docker pull ruby:$RUBY_DOCKER_TAG
           export BRANCH_NO_SLASH=${CIRCLE_BRANCH//\//_}
           docker-compose build $COMPOSE_SERVICE
     - run:
