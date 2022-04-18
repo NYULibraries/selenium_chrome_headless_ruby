@@ -47,3 +47,7 @@ end
 ## Updating chrome
 
 Update the variables in .env: update `CHROME_VERSION` to latest version of `google-chrome-stable` package. Determine this by running `apt-get update -y && apt-get upgrade -y google-chrome-stable` on a prebuilt image. Then update `CHROMIUM_DRIVER_VERSION` to the matching major version from [this page](https://chromedriver.chromium.org/downloads). Then update `CHROME_VERSION_SHORT` to the major version number.
+
+## Updating ruby
+
+Update variables in `.env` and `RUBY_DOCKER_TAG` values in `.circleci/config.yml`.

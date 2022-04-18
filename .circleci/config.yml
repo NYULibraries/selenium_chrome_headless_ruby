@@ -49,22 +49,22 @@ jobs:
     <<: *build_and_push
     environment:
       COMPOSE_SERVICE: full_2_6
-      RUBY_DOCKER_TAG: 2.6.9
+      RUBY_DOCKER_TAG: 2.6.10
   ruby2_6-slim:
     <<: *build_and_push
     environment:
       COMPOSE_SERVICE: slim_2_6
-      RUBY_DOCKER_TAG: 2.6.9-slim
+      RUBY_DOCKER_TAG: 2.6.10-slim
   ruby2_7:
     <<: *build_and_push
     environment:
       COMPOSE_SERVICE: full_2_7
-      RUBY_DOCKER_TAG: 2.7.5
+      RUBY_DOCKER_TAG: 2.7.6
   ruby2_7-slim:
     <<: *build_and_push
     environment:
       COMPOSE_SERVICE: slim_2_7
-      RUBY_DOCKER_TAG: 2.7.5-slim
+      RUBY_DOCKER_TAG: 2.7.6-slim
 
 workflows:
   version: 2
