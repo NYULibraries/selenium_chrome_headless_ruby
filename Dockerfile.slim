@@ -15,15 +15,17 @@ SHELL ["/bin/bash", "-eo", "pipefail", "-c"]
 RUN : "${CHROME_VERSION:?Need to set CHROME_VERSION non-empty}"
 RUN : "${CHROMIUM_DRIVER_VERSION:?Need to set CHROMIUM_DRIVER_VERSION non-empty}"
 RUN apt-get update && apt-get -y --no-install-recommends install $BUILD_PACKAGES $RUN_PACKAGES \
-  && wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -  \
+  && wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
   && echo "deb https://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list \
   && apt-get update && apt-get -y --no-install-recommends install google-chrome-stable=$CHROME_VERSION \
-  && wget -O /tmp/chromedriver.zip https://chromedriver.storage.googleapis.com/$CHROMIUM_DRIVER_VERSION/chromedriver_linux64.zip \
-  && unzip /tmp/chromedriver.zip chromedriver -d /usr/bin/ \
-  && rm /tmp/chromedriver.zip \
+  && wget -O /tmp/chromedriver.zip https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/$CHROMIUM_DRIVER_VERSION/linux64/chromedriver-linux64.zip \
+  && unzip /tmp/chromedriver.zip -d /tmp/ \
+  && mv /tmp/chromedriver-linux64/chromedriver /usr/bin/chromedriver \
   && chmod ugo+rx /usr/bin/chromedriver \
+  && rm -rf /tmp/chromedriver.zip /tmp/chromedriver-linux64 \
   && apt-get --purge -y autoremove $BUILD_PACKAGES \
   && apt-get clean && rm -rf /var/lib/apt/lists/*
+
 
 USER docker
 WORKDIR $INSTALL_PATH
