@@ -23,10 +23,11 @@ RUN apt-get update && apt-get -y --no-install-recommends install zlib1g-dev libl
 # Install Chrome driver
 ARG CHROMIUM_DRIVER_VERSION
 RUN : "${CHROMIUM_DRIVER_VERSION:?Need to set CHROMIUM_DRIVER_VERSION non-empty}"
-RUN wget -O /tmp/chromedriver.zip https://chromedriver.storage.googleapis.com/$CHROMIUM_DRIVER_VERSION/chromedriver_linux64.zip \
-    && unzip /tmp/chromedriver.zip chromedriver -d /usr/bin/ \
-    && rm /tmp/chromedriver.zip \
-    && chmod ugo+rx /usr/bin/chromedriver
+RUN wget -O /tmp/chromedriver.zip https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/136.0.7103.113/linux64/chromedriver-linux64.zip \
+    && unzip /tmp/chromedriver.zip -d /tmp/ \
+    && mv /tmp/chromedriver-linux64/chromedriver /usr/bin/chromedriver \
+    && chmod ugo+rx /usr/bin/chromedriver \
+    && rm -rf /tmp/chromedriver.zip /tmp/chromedriver-linux64
 
 USER docker
 WORKDIR $INSTALL_PATH
